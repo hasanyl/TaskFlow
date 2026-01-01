@@ -7,35 +7,52 @@ const AuthService = {
     /**
      * Kullanıcı kayıt işlemi 
      */
-    register : async (fullname, email, password, role) => {
-        //Şifreyi hashleyelim.
+    register: async (fullname, email, password, role) => {
         const hashedPassword = await bcrypt.hash(password, 10);
         const userId = await User.create(fullname, email, hashedPassword, role);
-        return {id : userId, email, fullname, role};
+        return { id: userId, email, fullname, role };
     },
     /**
      * Kullanıcı giriş işlemi
      */
-    login : async (email, password) => {
+    login: async (email, password) => {
         const user = await User.findByEmail(email);
-        if(!user) throw new Error('Kullanıcı bulunamadı!');
+        if (!user) throw new Error('Kullanıcı bulunamadı!');
 
-        //Kullanıcının haslenmiş şifresi ile girilen şifrenin (hash) karşılaştırılması
         const isMatch = await bcrypt.compare(password, user.password);
-        if(!isMatch) throw new Error('Hatalı şifre!');
+        if (!isMatch) throw new Error('Hatalı şifre!');
 
-        //Kullanıcıya özel bir token oluşturalım
         const token = jwt.sign(
-            {id : user.id , role : user.role},
+            { id: user.id, role: user.role },
             process.env.JWT_SECRET,
-            {expiresIn : process.env.JWT_EXPIRES_IN}
+            { expiresIn: process.env.JWT_EXPIRES_IN }
         );
 
         return {
             token,
-            user : {id : user.id, fullname : user.fullname, email : user.email, role : user.role}
+            user: { id: user.id, fullname: user.fullname, email: user.email, role: user.role }
         };
     },
-}
+
+    /**
+     * Kullanıcı profil güncelleme
+     */
+    updateProfile: async (userId, { fullname, password }) => {
+        const user = await User.findById(userId);
+        if (!user) throw new Error("Kullanıcı bulunamadı!");
+
+        let hashedPassword = undefined;
+        if (password) {
+            hashedPassword = await bcrypt.hash(password, 10);
+        }
+
+        return await User.update(userId, {
+            fullname: fullname || user.fullname,
+            email: user.email,
+            role: user.role,
+            password: hashedPassword
+        });
+    }
+};
 
 module.exports = AuthService;

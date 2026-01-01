@@ -14,7 +14,7 @@ const Project = {
      * @param {string} name - Proje Adı
      * @param {string} description - Proje Açıklaması
      */
-    create: async(name, description, manager_id) => {
+    create: async (name, description, manager_id) => {
         const sql = `INSERT INTO projects (title,description, manager_id) VALUES (?,?,?)`;
         const [result] = await db.execute(sql, [name, description, manager_id]);
         return result.insertId;
@@ -30,10 +30,22 @@ const Project = {
     /**
      * Proje durumunu güncelleme
      */
-    updateStatus : async (id, status) => {
+    updateStatus: async (id, status) => {
         const sql = `UPDATE projects SET status = ? WHERE id = ?`;
         const [result] = await db.execute(sql, [status, id]);
-        return result.affectedRows > 0; // Güncelleme başarılı ise true dönecek.
+        return result.affectedRows > 0;
+    },
+
+    update: async (id, title, description) => {
+        const sql = `UPDATE projects SET title = ?, description = ? WHERE id = ?`;
+        const [result] = await db.execute(sql, [title, description, id]);
+        return result.affectedRows > 0;
+    },
+
+    delete: async (id) => {
+        const sql = `DELETE FROM projects WHERE id = ?`;
+        const [result] = await db.execute(sql, [id]);
+        return result.affectedRows > 0;
     }
 };
 

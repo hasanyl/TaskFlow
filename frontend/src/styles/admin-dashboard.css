@@ -1,0 +1,189 @@
+/* ===== ROOT ===== */
+.dashboard-layout {
+  min-height: 100vh;
+  background-color: #0a0a0a;
+  background-image:
+    radial-gradient(circle at top left, rgba(37, 99, 235, 0.1), transparent 40%),
+    radial-gradient(circle at bottom right, rgba(124, 58, 237, 0.1), transparent 40%);
+  color: #e2e8f0;
+}
+
+/* ===== SIDEBAR ===== */
+.dashboard-sider {
+  background: #111111 !important;
+  border-right: 1px solid #262626;
+  padding: 24px;
+}
+
+.logo-section {
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 48px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+}
+
+.menu-btn {
+  color: #94a3b8 !important;
+}
+
+.menu-btn:hover {
+  color: #fff !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+
+.menu-btn.ant-btn-primary {
+  background: #2563eb !important;
+  color: #fff !important;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.menu-btn.ant-btn-dangerous {
+  color: #ef4444 !important;
+}
+
+.menu-btn.ant-btn-dangerous:hover {
+  background: rgba(239, 68, 68, 0.1) !important;
+}
+
+/* ===== MAIN ===== */
+.main-content {
+  padding: 64px;
+}
+
+/* ===== HEADER ===== */
+.content-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 48px;
+}
+
+.page-title {
+  font-size: 64px;
+  font-weight: 900;
+  color: #fff;
+  margin: 0;
+  letter-spacing: -2px;
+}
+
+.welcome-back {
+  font-size: 14px;
+  color: #94a3b8;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* ===== PRIMARY BUTTON ===== */
+.create-task-btn {
+  height: 52px;
+  padding: 0 28px;
+  border-radius: 14px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  border: none;
+  box-shadow: 0 12px 30px rgba(37, 99, 235, 0.3);
+  color: white;
+}
+
+.create-task-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* ===== CARD ===== */
+.tasks-section {
+  background: #111111;
+  border: 1px solid #262626;
+  border-radius: 28px;
+  padding: 32px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+/* ===== TABLE ===== */
+.tasks-section .ant-table {
+  background: transparent;
+}
+
+.tasks-section .ant-table-thead>tr>th {
+  background: transparent !important;
+  border-bottom: 1px solid #262626 !important;
+  font-weight: 700;
+  color: #94a3b8 !important;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+.tasks-section .ant-table-tbody>tr>td {
+  border-bottom: 1px solid #1a1a1a !important;
+  padding: 24px 16px;
+  color: #e2e8f0;
+}
+
+.tasks-section .ant-table-tbody>tr:hover>td {
+  background: rgba(255, 255, 255, 0.03) !important;
+}
+
+.tasks-section .ant-pagination-item-active {
+  background-color: #2563eb;
+  border-color: #2563eb;
+}
+
+.tasks-section .ant-pagination-item a {
+  color: #fff;
+}
+
+/* ===== TASK CELL ===== */
+.task-title {
+  font-weight: 700;
+  color: #fff;
+  font-size: 15px;
+}
+
+.task-description {
+  font-size: 13px;
+  color: #64748b;
+  margin-top: 4px;
+  word-wrap: break-word;
+  word-break: break-word;
+  /* Ensure long words break */
+  white-space: normal;
+  /* Ensure text wraps */
+}
+
+.text-wrap-cell {
+  white-space: normal !important;
+  word-wrap: break-word !important;
+  word-break: break-word !important;
+  max-width: 300px;
+  /* Limit width to force wrapping */
+}
+
+/* ===== MODAL & Status ===== */
+.create-task-modal .ant-modal-content {
+  border-radius: 24px;
+  background-color: #111111;
+  border: 1px solid #262626;
+}
+
+.create-task-modal .ant-modal-header {
+  background: transparent;
+}
+
+.create-task-modal .ant-modal-title {
+  color: white;
+}
+
+/* Status colors */
+.status-tag {
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 10px;
+  padding: 4px 12px;
+  border-radius: 99px;
+  letter-spacing: 0.5px;
+}

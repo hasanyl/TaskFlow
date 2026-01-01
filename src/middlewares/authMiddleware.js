@@ -1,9 +1,5 @@
 const jwt = require("jsonwebtoken");
 
-/**
- * Middleware kodları
- */
-
 const protect = (req, res, next) => {
     let token;
     if(req.headers.authorization && req.headers.authorization.startsWith('Bearer')){

@@ -12,9 +12,12 @@ router.post('/login', AuthController.login);
 //Gizli rota
 router.get('/profile', protect, (req, res) => {
     res.json({
-        message : "Profile hoş geldin!",
-        user : req.user
+        message: "Profile hoş geldin!",
+        user: req.user
     });
 });
+
+// Profil güncelleme
+router.patch('/profile', protect, AuthController.updateProfile);
 
 module.exports = router;
