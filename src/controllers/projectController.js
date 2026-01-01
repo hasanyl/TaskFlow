@@ -45,7 +45,7 @@ const ProjectController = {
     updateProject: async (req, res) => {
         try {
             const { id } = req.params;
-            const { name, description } = req.body; // frontend sends 'name' but DB uses 'title'
+            const { name, description } = req.body;
 
             const success = await Project.update(id, name, description);
             if (!success) return res.status(404).json({ error: "Proje bulunamadı." });
